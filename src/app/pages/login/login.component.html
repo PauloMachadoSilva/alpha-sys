@@ -1,0 +1,47 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Login</mat-card-title>
+        <mat-card-subtitle>Acesso administrativo</mat-card-subtitle>
+    </mat-card-header>
+      <mat-card-content>
+        <form [formGroup]="formulario"> 
+            <mat-form-field appearance="fill">
+                <mat-label>USUÁRIO</mat-label>
+                <input formControlName="nome" matInput placeholder="Informe o usuário">
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>SENHA</mat-label>
+                <input formControlName="senha" matInput placeholder="Informe a senha" matInput [type]="hide ? 'password' : 'text'">
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+            <div class="action-button">
+                <button mat-raised-button color="primary">ACESSAR</button>
+            </div>
+        </form>
+      </mat-card-content>
+</mat-card>
+<br>
+<br>
+<mat-card>
+    <mat-card-title>Tiulo</mat-card-title>
+    
+  </mat-card>
+
+<!-- <table *ngIf="svc">
+    <thead>
+        <th>Name</th>
+        <th>Index</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let svcs of svc.retorno">
+            <td>{{svcs.nome}}</td>
+            <td>{{svcs.data}}</td>
+        </tr>
+    </tbody>
+</table>
+<div class="spinner">
+    <mat-spinner *ngIf="!svc"></mat-spinner>
+</div> -->

@@ -1,0 +1,84 @@
+@import '../../sass/_variables'
+@import '../../sass/_mixins'
+
+.disclaimer-content
+    background-color: #404040
+    height: 251px
+    position: relative
+    .disclaimer-content-grid
+        width: 80%
+        margin: 0 auto
+        padding-top: 20px
+        .img-logo
+            width: 120px
+        .img-sociais
+            width: 250px
+        .logo
+            display: inline-block
+            position: relative
+            margin: 40px auto
+            text-align: center
+            width: 20%
+        .sociais
+            display: inline-block
+            position: relative
+            margin: 40px auto
+            text-align: center
+            width: 20%
+            border-left: 1px solid #535353
+            padding-left: 30px
+    .container-links
+        position: absolute
+        bottom: 0
+        background-color: #4B4B4B
+        width: 100%
+        height: 81px
+        ul
+            list-style-type: none !important
+            color:#8E8A8A
+            text-transform: uppercase
+            padding-left: 0px
+            margin: 20px auto
+            text-align: center
+            li
+                border-right: 1px solid #8E8A8A
+                display: inline-block
+                font-size: 10.5px
+                padding-left: 8px
+                padding-right: 8px
+                cursor: pointer
+                &:last-child
+                    border-right: 0px
+
+
+
+//SmartPhones
+@media #{$mq-mobile-min} and #{$mq-mobile-max}
+    .disclaimer-content
+        height: 270px
+        .container-links
+            height: 105px
+            ul
+                margin: 10px auto
+        .disclaimer-content-grid
+            width: 95%
+            .logo
+                margin: 20px auto
+                width: 32%
+                img
+                    width: 90%
+            .sociais
+                display: block
+                position: relative
+                margin: 0px auto
+                text-align: center
+                width: 100%
+                border-left: 0px
+                border: 0
+                padding-left: 0px
+                img
+//Tablets
+@media #{$mq-tablet-min} and #{$mq-tablet-max}    
+    .disclaimer-content
+        .disclaimer-content-grid
+            width: 100%

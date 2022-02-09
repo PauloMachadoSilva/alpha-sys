@@ -1,0 +1,82 @@
+@import '../../sass/_variables'
+@import '../../sass/_mixins'
+
+.footer-content
+    height: 251px
+    position: relative
+    .container-links
+        width: 90%
+        margin: 40px auto
+        .links
+            position: relative 
+            display: inline-block
+            width: 62%
+            bottom: 30px
+            ul
+                list-style-type: none !important
+                color:#8E8A8A
+                text-transform: uppercase
+                padding-left: 0px
+                margin: 20px auto
+                text-align: center
+                li
+                    border-right: 1px solid #8E8A8A
+                    display: inline-block
+                    font-size: 10.5px
+                    padding-left: 28px
+                    padding-right: 28px
+                    cursor: pointer
+                    &:last-child
+                        border-right: 0px
+        .seals-links
+            position: relative 
+            display: inline-block
+            width: 20%
+            border-left: 2px solid #ccc
+            padding-left: 30px
+            .seals-links-logo
+                position: relative 
+                display: inline-block
+                width: 30%
+        .text-info
+            p
+                font-size: 11px
+                text-align: justify
+                color: #8E8A8A
+//SmartPhones
+@media #{$mq-mobile-min} and #{$mq-mobile-max}
+    .container-links
+        margin: 0px auto !important
+        .links
+            width: 90% !important
+            margin: 0 auto
+            bottom: 0px !important
+            ul
+                li
+                    padding-left: 8px !important
+                    padding-right: 8px !important
+
+        .seals-links
+            width: 78% !important
+            border-left: 0px !important
+            padding-left: 0px !important
+//Tablets
+@media #{$mq-tablet-min} and #{$mq-tablet-max} 
+    .container-links
+        margin: 0px auto !important
+        .links
+            width: 48% !important
+            margin: 0 auto
+            bottom: 0px !important
+            ul
+                li
+                    padding-left: 8px !important
+                    padding-right: 8px !important   
+        .seals-links
+            border-left: 0px !important
+            width: 48% !important
+            padding-left: 0px !important
+            top: 20px !important
+
+    .seals-links-logo
+        width: 20% !important

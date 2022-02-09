@@ -1,0 +1,39 @@
+.col {
+    display: inline-block;
+    vertical-align: top;
+    min-height: 1px;
+    *zoom: 1;
+    *display: inline;
+}
+
+    /* tres colunas */
+    @media (min-width: 728px) {
+        .col-3 {
+            width: 29%;
+        }
+    }
+.card {
+    margin:8px
+}
+.example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+}
+mat-card-actions{
+    text-align: center;
+}
+button {
+    width: 100%;
+}
+.mat-card-avatar {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    object-fit: cover;
+    background-color: black;
+    color: white;
+    text-align: center;
+    margin-top: 0px;
+    font-size: 30px;
+}

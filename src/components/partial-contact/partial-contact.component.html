@@ -1,0 +1,148 @@
+<div class="contact-content">
+        <h1>CONTATO</h1>        
+    <div class="contact-form">
+        <div class="contact-form-field">
+            <form [formGroup]="formulario"> 
+                <h2>Envie-nos uma mensagem.</h2> 
+                <div class="valid-form">            
+                    <span *ngIf="!formulario.get('nome').valid && formulario.get('nome').touched" class="div-form">Informe um nome válido</span>
+                    <span *ngIf="!formulario.get('email').valid && formulario.get('email').touched" class="div-form"> - Informe um e-mail válido</span>
+                    <span *ngIf="!formulario.get('ddd').valid && formulario.get('ddd').touched" class="div-form"> - Informe um ddd válido</span>
+                    <span *ngIf="!formulario.get('telefone').valid && formulario.get('telefone').touched" class="div-form"> - Informe um telefone válido</span>
+                    <span *ngIf="!formulario.get('duvidas').valid && formulario.get('duvidas').touched" class="div-form"> - Informe tipo de dúvida</span>
+                    <span *ngIf="!formulario.get('txtduvidas').valid && formulario.get('txtduvidas').touched" class="div-form"> - Informe a dúvida</span>
+                </div>       
+                <input type="text" class="nome"
+                placeholder="Nome"
+                formControlName="nome">
+                
+                <input type="text" class="email"
+                placeholder="E-mail"
+                formControlName="email">
+
+                <input type="text" class="ddd"
+                placeholder="DDD"
+                formControlName="ddd"
+                maxlength="2">
+                
+                <input type="text" class="telefone"
+                placeholder="Telefone"
+                formControlName="telefone"
+                [textMask]="{mask: maskTelefone}">  
+                
+                <select name="" id="" class="duvidas"
+                formControlName="duvidas">
+                    <option value="">Estou com dúvidas</option>
+                    <option value="1">Fundos de Investimento</option>    
+                    <option value="2">Renda Fixa</option>            
+                </select>      
+                
+                <textarea name="" id="" cols="30" rows="19" class="text-duvidas"
+                formControlName="txtduvidas"></textarea>                
+                <button class="enviar" [disabled]="!formulario.valid" (click)="enviarContato($event)">ENVIAR</button>
+            </form>
+        </div>
+    </div>
+    <div class="contact-location">
+        <h2>Entre em contato com nossas equipes</h2>    
+        <div class="region">
+            <div class="region-id sp active">SP</div>
+            <div class="region-id rj">RJ</div>
+            <div class="region-id rs">RS</div>
+            <div class="region-id ouv">OUVIDORIA</div>
+        </div>
+        <div class="region-unit sp active">
+            <p class="title-unit">Unidade de São Paulo</p>
+            <div class="region-unit-info">
+                <p class="title">HORÁRIO DE ATENDIMENTO:</p>
+                <p>DAS 8H AS 17H30</p>   
+            </div>
+            <div class="region-unit-info">
+                <p class="title">TELEFONES:</p>
+                <p> (11) 2137-8191 | 3524-8191</p>                
+            </div>
+            <div class="region-unit-info">
+                <img src="/assets/imgs/contact/contact_chat.png" class="up" alt="">
+            </div>
+            <div class="region-unit-info">
+                <img src="/assets/imgs/contact/contact_wp.png" class="up" alt="">                    
+            </div>
+            <div class="address">
+                <p class="address-title">ENDEREÇO:</p>
+                <p>
+                    Avenida Paulista, 1106 - 6º andar - 
+                    Bela Vista  - 01313-010 - SP <br>
+                    <span>100m do Metrô Trianon Masp</span>
+                </p>
+                <p></p>
+            </div> 
+        </div> 
+        <div class="region-unit rj">
+                <p class="title-unit">Unidade do Rio de Janeiro</p>
+                <div class="region-unit-info">
+                    <p class="title">HORÁRIO DE ATENDIMENTO:</p>
+                    <p>DAS 8H AS 17H30</p>   
+                </div>
+                <div class="region-unit-info">
+                    <p class="title">TELEFONES:</p>
+                    <p> (21) 2169-9999 </p>                
+                </div>
+                <div class="region-unit-info">
+                    <img src="/assets/imgs/contact/contact_chat.png" class="up" alt="">
+                </div>
+                <div class="region-unit-info">
+                    <img src="/assets/imgs/contact/contact_wp.png" class="up" alt="">                    
+                </div>
+                <div class="address">
+                    <p class="address-title">ENDEREÇO:</p>
+                    <p>Rua Candelária, nº 65, 17° andar , Centro</p>
+                    <p></p>
+                </div> 
+        </div> 
+        <div class="region-unit rs">
+                <p class="title-unit">Unidade do Rio Grande do Sul</p>
+                <div class="region-unit-info">
+                    <p class="title">HORÁRIO DE ATENDIMENTO:</p>
+                    <p>DAS 8H AS 17H30</p>   
+                </div>
+                <div class="region-unit-info">
+                    <p class="title">TELEFONES:</p>
+                    <p> (xx) xxxx-xxxx | xxxx-xxxx</p>                
+                </div>
+                <div class="region-unit-info">
+                    <img src="/assets/imgs/contact/contact_chat.png" class="up" alt="">
+                </div>
+                <div class="region-unit-info">
+                    <img src="/assets/imgs/contact/contact_wp.png" class="up" alt="">                    
+                </div>
+                <div>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                </div> 
+        </div> 
+        <div class="region-unit ouv">
+                <p class="title-unit">Ouvidoria</p>
+                <div class="region-unit-info">
+                    <p class="title">HORÁRIO DE ATENDIMENTO:</p>
+                    <p>DAS 8H AS 17</p>   
+                </div>
+                <div class="region-unit-info">
+                    <p class="title">TELEFONES:</p>
+                    <p> 0800 605 8888</p>                
+                </div>
+                <div class="region-unit-info">
+                    <img src="/assets/imgs/contact/contact_chat.png" class="up" alt="">
+                </div>
+                <div class="region-unit-info">
+                    <img src="/assets/imgs/contact/contact_wp.png" class="up" alt="">                    
+                </div>
+                <div class="address">
+                    <p class="address-title">ENDEREÇO:</p>
+                    <p>Rua Surubim, nº 373, 4º Andar, Cidade Monções - São Paulo - SP</p>
+                    <p></p>
+                </div> 
+        </div>               
+    </div>
+</div>

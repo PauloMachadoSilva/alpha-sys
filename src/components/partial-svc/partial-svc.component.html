@@ -1,0 +1,14 @@
+<div class="svc-content">
+        <h1>SERVIÇOS</h1>        
+    <div class="svc-content-grid">
+        <div *ngFor="let s of svc;" class="svc-content-grid-img-{{s.id}}">
+            <div class="footer-title-{{s.id}}">
+                <p>{{ s.titulo }}</p>
+            </div>
+            <div class="svc-description-{{s.id}}">
+                <h2>{{ s.titulo }}</h2>
+                <p>{{ s.texto }}</p>
+            </div>
+        </div>
+    </div>
+</div>

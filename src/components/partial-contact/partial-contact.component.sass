@@ -1,0 +1,201 @@
+@import '../../sass/_variables'
+@import '../../sass/_mixins'
+
+.contact-content
+    background-color: #FFFFFF 
+    height: auto
+    margin: 0 auto
+    position: relative
+    width: 100%
+    text-align: center
+    h1
+        color: #3168B8
+        margin: 80px 0 0px 0
+        position: relative
+        display: inline-block
+        text-align: center
+        width: 100%
+        font-family: Arial, Helvetica, sans-serif
+        font-weight: 100
+        font-size: 50px
+.contact-form  
+    width: 41%
+    position: relative
+    margin: 0 auto
+    display: inline-table
+    padding: 40px
+    
+    h2
+        font-size: 21px
+        color: #cccccc
+        font-weight: 100
+        font-family: Arial, Helvetica, sans-serif
+        text-align: left
+    .contact-form-field
+        width: 100%
+        line-height: 50px
+        ::placeholder
+            position: relative
+            padding-left: 0px
+        input[type=text] 
+            position: relative
+            padding-left: 3px
+        input.ng-invalid.ng-touched 
+            border: 1px solid red
+        .valid-form
+            line-height: 12px
+            .div-form
+                color: rgb(188, 0, 0)
+                font-weight: bold
+                font-size: 12px
+                z-index: 9999999
+                position: relative
+                height: 0px
+                text-align: left
+                text-indent: 70px
+                bottom: 12px
+                display: inline
+        button:disabled 
+            background-color: #0077d95b !important
+            cursor:no-drop !important
+        .nome
+            width: 99%
+            height: 30px
+            border-radius: 5px
+            border: 1px solid #ccc
+            
+        .email
+            width: 44%
+            height: 30px
+            border-radius: 5px
+            border: 1px solid #ccc 
+            display: inline
+        .ddd
+            width: 14%
+            height: 30px
+            border-radius: 5px
+            border: 1px solid #ccc 
+            display: inline  
+            margin-left: 2%
+        .telefone
+            width: 34%
+            height: 30px
+            border-radius: 5px
+            border: 1px solid #ccc    
+            display: inline
+        .duvidas
+            width: 99%
+            height: 30px
+            border-radius: 5px
+            border: 1px solid #ccc    
+            display: inline  
+        .text-duvidas
+            width: 99%
+            height: 80px
+            border-radius: 5px
+            border: 1px solid #ccc    
+            display: inline      
+        .enviar
+            float: right
+            @include btn($color-btn-login)
+.contact-location   
+    width: 40%
+    position: relative
+    margin: 0 auto  
+    display: inline-table
+    padding: 40px
+    .region
+        width: 100%
+        margin: 0 auto
+        position: relative
+        text-align: left
+        .region-id
+            display: inline
+            color: #595F62
+            border: 1px solid #ccc
+            padding: 10px
+            border-radius: 5px
+            margin: 0 auto
+            cursor: pointer
+        .active
+            color: $color-wh
+            background-color: $color-font-light-blue
+    .region-unit
+        display: none
+        width: 100%
+        margin: 40px auto
+        position: relative
+        text-align: left
+    .address
+        .address-title
+            color: $color-font-dark-gray
+        span
+            color: $color-font-light-blue
+        p
+            color: $color-font-dark-gray
+    .active
+        display: block
+        .title-unit
+            color: $color-font-light-blue
+            font-size: 22px
+        .region-unit-info
+            position: relative
+            display: inline-table
+            width: 48%
+            margin-bottom: 30px
+            line-height: 10px
+            p
+                color: $color-font-dark-gray
+                line-height: 20px
+
+            .title
+                font-size: 14px
+                line-height: 20px
+                color: $color-font-light-gray
+    h2
+        font-size: 21px
+        color: #cccccc
+        font-weight: 100
+        font-family: Arial, Helvetica, sans-serif 
+        text-align: left
+    
+    
+    
+
+//SmartPhones
+@media #{$mq-mobile-min} and #{$mq-mobile-max}    
+    .contact-content
+        .contact-form 
+            width: 90%
+            padding: 0px
+            .contact-form-field
+                .nome
+                    width: 100%
+                .email
+                    width: 100%
+                .nome
+                    width: 100%
+                .ddd
+                    width: 100%
+                    margin-left: 0px
+                .telefone
+                    width: 100%
+        .contact-location
+            width: 90%
+            background-color: #fbfbfb
+            padding: 25px 
+
+    //Tablets
+@media #{$mq-tablet-min} and #{$mq-tablet-max}   
+    .contact-content
+        height: auto
+        .contact-form 
+            width: 90%
+            padding: 0px
+            .contact-form-field
+                .email
+                    width: 46% 
+        .contact-location
+            width: 90%
+            background-color: #fbfbfb
+            padding: 25px 

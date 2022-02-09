@@ -1,0 +1,89 @@
+<!-- <mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/login">Login</a>
+      <a mat-list-item routerLink="/home">Home</a>
+      <a mat-list-item routerLink="/products">Produtos</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>Alpha-sys</span>
+    </mat-toolbar>
+  </mat-sidenav-content>
+</mat-sidenav-container> -->
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+  <mat-toolbar color="primary" class="example-toolbar">
+    <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+    <h1 class="example-app-name">Alpha-sys</h1>
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Conta">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <mat-icon>manage_accounts</mat-icon>
+        <span>Minha Conta</span>
+      </button>
+      <button mat-menu-item disabled>
+        <mat-icon>settings</mat-icon>
+        <span>Opções</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>logout</mat-icon>
+        <span>Sair</span>
+      </button>
+    </mat-menu>
+
+  </mat-toolbar>
+  <mat-sidenav-container class="example-sidenav-container"
+                         [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
+                 [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+      <mat-nav-list >
+        <a (click)="snav.close()" mat-list-item routerLink="/home"><mat-icon class="mat-icon-menu">home</mat-icon> Home</a>
+        <a (click)="snav.close()" mat-list-item routerLink="/login"><mat-icon class="mat-icon-menu">account_circle</mat-icon>Login</a>
+        <mat-accordion>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <mat-icon class="mat-icon-menu">shopping_cart</mat-icon>Venda
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <a (click)="snav.close()" mat-list-item routerLink="/list-products"><mat-icon class="mat-icon-menu">navigate_next</mat-icon>Listagem</a>
+            <a (click)="snav.close()" mat-list-item routerLink="/products"><mat-icon class="mat-icon-menu">navigate_next</mat-icon>Vitrine</a>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <mat-accordion>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <mat-icon class="mat-icon-menu">app_registration</mat-icon>Cadastro
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <a (click)="snav.close()" mat-list-item routerLink="/add-products"><mat-icon class="mat-icon-menu">navigate_next</mat-icon>Incluir</a>
+            <a (click)="snav.close()" mat-list-item routerLink="/list-products"><mat-icon class="mat-icon-menu">navigate_next</mat-icon>Alterar</a>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <a (click)="snav.close()" mat-list-item routerLink="/relatorio"><mat-icon class="mat-icon-menu">picture_as_pdf</mat-icon>Relatório</a>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content class="sidenav-content" (click)="snav.close()">
+      <p>
+        <router-outlet></router-outlet>
+      </p>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

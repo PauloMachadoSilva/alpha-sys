@@ -1,0 +1,83 @@
+<div style="overflow: auto;max-height: 500px;"> 
+  <mat-selection-list style="margin-bottom: 8px"  #d>
+    <h2>RESUMO DA COMPRA</h2>
+        <mat-list  *ngFor="let d of data" class="items" [value]="d">
+            <div style="justify-content:space-between;display: flex;" class="items">
+                <input (keyup)="addItem(d.valor,$event)" style="width: 30px;background-color: #cccccc47;border: 1px solid #ccc;" class="items-inline"  matInput placeholder="1" #input>
+                <span class="items-inline">{{d.nome}}</span> 
+                <!-- <span class="items-inline">{{d.descricao}}</span>  -->
+                <span class="items-inline">R$ {{d.valor}}</span>
+            </div>
+        </mat-list>
+    </mat-selection-list>
+    <mat-divider></mat-divider>
+    <div class="value-itens">
+        <!-- <p>
+            Quantidade: {{data.length}}
+        </p> -->
+        <p>
+          <strong>Total:</strong> R$ {{productValue}}
+        </p>
+        <p>
+          <strong>Total pago:</strong> R$ {{valorPago}}
+        </p>
+        <p>
+          <strong>Valor restante:</strong> R$ {{productValueCompare}}
+        </p>
+        
+    </div>
+    <mat-divider></mat-divider>
+    <div>
+      <h4>Formas de Pagamento</h4>
+      <mat-form-field appearance="fill">
+        <mat-label>Pagar com...</mat-label>
+        <mat-select [(ngModel)]="selectedOptions" (ngModelChange)="onNgModelChange($event)">
+          <mat-option *ngFor="let forma of formas" [value]="forma.value">
+            {{forma.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field *ngIf='!typeValue'>
+        <mat-label>Valor</mat-label>
+        <input (keyup)="checkvalue()"  matInput [(ngModel)]="valorPago" placeholder="Informe o valor" #input>
+      </mat-form-field> 
+      </div>
+      <div *ngIf='typeValue'>
+        <div>
+          <h4>Forma 1</h4>
+          <mat-form-field appearance="fill">
+            <mat-label>Pagar com...</mat-label>
+            <mat-select>
+              <mat-option *ngFor="let forma of outrasFormas" [value]="forma.value">
+                {{forma.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Valor</mat-label>
+            <input matInput placeholder="Informe o valor" #input>
+          </mat-form-field>    
+        </div>
+        <div>
+        <h4>Forma 2</h4>
+        <mat-form-field appearance="fill">
+          <mat-label>Pagar com...</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let forma of outrasFormas" [value]="forma.value">
+              {{forma.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Valor</mat-label>
+          <input matInput placeholder="Informe o valor" #input>
+        </mat-form-field>
+        </div>
+    </div>
+
+</div>
+<div class="action-button">
+    <button style="margin-right: 24px" mat-raised-button color="warn" (click)="onNoClick()">CANCELAR</button>
+    <button mat-raised-button color="primary">COMPRAR</button>
+</div>
+

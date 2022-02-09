@@ -1,0 +1,34 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Gerar relatório</mat-card-title>
+        <mat-card-subtitle></mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <form [formGroup]="formulario"> 
+            <mat-form-field>
+                <mat-label>Data</mat-label>
+                <textarea formControlName="nome" matInput placeholder="Informe a data"></textarea>
+            </mat-form-field>
+            <div class="action-button">
+                <button mat-raised-button color="primary">GEERAR</button>
+            </div>
+        </form>
+      </mat-card-content>
+</mat-card>
+
+<!-- <table *ngIf="svc">
+    <thead>
+        <th>Name</th>
+        <th>Index</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let svcs of svc.retorno">
+            <td>{{svcs.nome}}</td>
+            <td>{{svcs.data}}</td>
+        </tr>
+    </tbody>
+</table>
+<div class="spinner">
+    <mat-spinner *ngIf="!svc"></mat-spinner>
+</div> -->
