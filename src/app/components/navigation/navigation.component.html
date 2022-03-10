@@ -27,7 +27,7 @@
 <div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
   <mat-toolbar color="primary" class="example-toolbar">
     <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
-    <h1 class="example-app-name">Alpha-sys</h1>
+    <img class="img" src="../../assets/logo/logo-alpha.png">
     <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Conta">
       <mat-icon>account_circle</mat-icon>
     </button>
@@ -54,7 +54,7 @@
       <mat-nav-list >
         <a (click)="snav.close()" mat-list-item routerLink="/home"><mat-icon class="mat-icon-menu">home</mat-icon> Home</a>
         <a (click)="snav.close()" mat-list-item routerLink="/login"><mat-icon class="mat-icon-menu">account_circle</mat-icon>Login</a>
-        <mat-accordion>
+        <!-- <mat-accordion>
           <mat-expansion-panel>
             <mat-expansion-panel-header>
               <mat-panel-title>
@@ -64,7 +64,7 @@
             <a (click)="snav.close()" mat-list-item routerLink="/list-products"><mat-icon class="mat-icon-menu">navigate_next</mat-icon>Listagem</a>
             <a (click)="snav.close()" mat-list-item routerLink="/products"><mat-icon class="mat-icon-menu">navigate_next</mat-icon>Vitrine</a>
           </mat-expansion-panel>
-        </mat-accordion>
+        </mat-accordion> -->
         <mat-accordion>
           <mat-expansion-panel>
             <mat-expansion-panel-header>
@@ -73,7 +73,7 @@
               </mat-panel-title>
             </mat-expansion-panel-header>
             <a (click)="snav.close()" mat-list-item routerLink="/add-products"><mat-icon class="mat-icon-menu">navigate_next</mat-icon>Incluir</a>
-            <a (click)="snav.close()" mat-list-item routerLink="/list-products"><mat-icon class="mat-icon-menu">navigate_next</mat-icon>Alterar</a>
+            <a (click)="snav.close()" mat-list-item routerLink="/list-products"><mat-icon class="mat-icon-menu">navigate_next</mat-icon>Listar</a>
           </mat-expansion-panel>
         </mat-accordion>
         <a (click)="snav.close()" mat-list-item routerLink="/relatorio"><mat-icon class="mat-icon-menu">picture_as_pdf</mat-icon>Relatório</a>

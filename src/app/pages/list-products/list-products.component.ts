@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 import { produtosService } from 'src/services/produtos/produtos.service';
 import { SelectionModel } from '@angular/cdk/collections';
 import { DialogComponent } from './modal/dialog.component';
+import { Router } from '@angular/router';
 
 
 export interface UserData {
@@ -31,11 +32,11 @@ const NAMES: string[] = [
 
 @Component({
   selector: 'app-list-products',
-  styleUrls: ['./list-products.component.css'],
+  styleUrls: ['./list-products.component.scss'],
   templateUrl: './list-products.component.html',
 })
 export class ListProductsComponent {
-  displayedColumns: string[] = ['select','nome', 'valor', 'quantidade'];
+  displayedColumns: string[] = ['select','nome', 'valor'];
   dataSource: MatTableDataSource<UserData>;
   animal: string;
   name: string;
@@ -44,16 +45,17 @@ export class ListProductsComponent {
   svc: any;
   selection = new SelectionModel<any>(true, []);
 
-  types: {} = 
+  types: {} =
   [
     {nome:'Livro 1', descricao:'Descrição do livro', valor: 'R$: 50,00', },
     {nome:'Livro 2', descricao:'Descrição do livro', valor: 'R$: 30,00', }
   ];
   constructor(
     public dialog: MatDialog,
-    private _servicosService: produtosService
-    
-    
+    private _servicosService: produtosService,
+    private router: Router
+
+
 
   ) {
     this.getProdutos();
@@ -65,7 +67,7 @@ export class ListProductsComponent {
       .consultaProdutos()
       .subscribe(svc => {
         this.svc = svc ? svc : [];
-        this.dataSource = new MatTableDataSource(this.svc.retorno);
+        this.dataSource = new MatTableDataSource(this.svc.retorno ? this.svc.retorno : [] );
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
       });
@@ -81,7 +83,7 @@ export class ListProductsComponent {
     }
   }
   openDialog(): void {
-    
+
     let dialogRef = this.dialog.open(DialogComponent, {
       width: '100%',
       data: this.selection.selected
@@ -90,12 +92,18 @@ export class ListProductsComponent {
     dialogRef.afterClosed().subscribe(result => {
     });
   }
+  redirectAdd() {
+    this.router.navigate(['/add-products'])
+
+  }
 
    /** Whether the number of selected elements matches the total number of rows. */
    isAllSelected() {
-    const numSelected = this.selection.selected.length;
-    const numRows = this.dataSource.data.length;
-    return numSelected === numRows;
+     if (this.selection.selected.length > 0) {
+        const numSelected = this.selection.selected.length;
+        const numRows = this.dataSource.data.length;
+        return numSelected === numRows;
+     }
   }
 
   /** Selects all rows if they are not all selected; otherwise clear selection. */
@@ -115,6 +123,6 @@ export class ListProductsComponent {
     }
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.position + 1}`;
 
-    
+
   }
 }

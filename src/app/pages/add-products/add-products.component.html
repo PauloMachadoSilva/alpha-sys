@@ -5,7 +5,7 @@
         <mat-card-subtitle></mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
-        <form [formGroup]="formulario"> 
+        <form [formGroup]="formulario">
             <mat-form-field>
                 <mat-label>NOME</mat-label>
                 <textarea formControlName="nome" matInput placeholder="Informe o nome"></textarea>
@@ -16,14 +16,14 @@
             </mat-form-field>
             <mat-form-field>
                 <mat-label>VALOR</mat-label>
-                <textarea formControlName="valor" matInput placeholder="Informe o valor"></textarea>
+                <input currencyMask formControlName="valor" matInput placeholder="Informe o valor" [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"/>
             </mat-form-field>
             <mat-form-field>
                 <mat-label>QUANTIDADE</mat-label>
                 <textarea formControlName="quantidade" matInput placeholder="Informe a quantidade"></textarea>
             </mat-form-field>
             <div class="action-button">
-                <button mat-raised-button color="primary">INCLUIR</button>
+                <button (click)="incluir();" mat-raised-button color="primary">INCLUIR</button>
             </div>
         </form>
       </mat-card-content>

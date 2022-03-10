@@ -1,4 +1,5 @@
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { CUSTOM_ELEMENTS_SCHEMA, LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
@@ -25,7 +26,7 @@ import { CoreModule, FlexLayoutModule } from '@angular/flex-layout';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from "@angular/forms";
 import {MatMenuModule} from '@angular/material/menu';
-import { MatTableModule } from '@angular/material/table'  
+import { MatTableModule } from '@angular/material/table'
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatExpansionModule} from '@angular/material/expansion';
@@ -37,6 +38,12 @@ import { RelatorioComponent } from './pages/relatorio/relatorio.component';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatSelectModule } from '@angular/material/select';
 import { ListProductsComponent } from './pages/list-products';
+import { SucessoComponent } from './pages/add-products/add-products.component';
+import { NgxCurrencyModule } from "ngx-currency";
+import { registerLocaleData } from '@angular/common';
+import ptBr from '@angular/common/locales/pt';
+
+registerLocaleData(ptBr);
 
 
 
@@ -66,7 +73,8 @@ const routes: Routes = [
     ProductsComponent,
     AddProductsComponent,
     ConfirmBuyComponent,
-    RelatorioComponent
+    RelatorioComponent,
+    SucessoComponent,
   ],
   imports: [
     BrowserModule,
@@ -90,6 +98,8 @@ const routes: Routes = [
     MatExpansionModule,
     MatDialogModule,
     MatCheckboxModule,
+    MatSnackBarModule,
+    NgxCurrencyModule,
     CoreModule,
     [RouterModule.forRoot(routes,
       {enableTracing: true}
@@ -98,7 +108,8 @@ const routes: Routes = [
   exports: [RouterModule],
   providers: [
     produtosService,
-    { provide: LocationStrategy, useClass: HashLocationStrategy }
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
+    { provide: LOCALE_ID, useValue: 'pt' },
   ],
   bootstrap: [AppComponent]
 })

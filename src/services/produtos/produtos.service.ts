@@ -28,8 +28,19 @@ export class produtosService {
     consultaProdutos(){
         return this
             ._httpClient
-            .get(`http://agenciap2mk.com.br/alpha-sys/produtos.php/produtos/`, httpOptions)
+            .get(`http://www.alphasolucaoemseg.com.br/sys/produtos.php/produtos/`, httpOptions)
     }
+
+
+    /**
+     * Incluindo produtos
+     * @author Paulo Eduardo - pauloems@yahoo.com.br
+     */
+     incluirProdutos(body: any){
+      return this
+          ._httpClient
+          .post(`http://www.alphasolucaoemseg.com.br/sys/produtos.php/produtos/`, body, httpOptions)
+  }
 
 
 }

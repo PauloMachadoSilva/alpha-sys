@@ -42,7 +42,7 @@ mat-sidenav {
 }
 .mat-toolbar.mat-primary {
   background-color: #000;
-  display: flex; 
+  display: flex;
   justify-content: space-between;
 }
 .mat-expansion-panel-header {
@@ -60,6 +60,9 @@ mat-sidenav {
 }
 .mat-expansion-panel-body {
   padding: 0 6px 6px !important;
+}
+.img {
+  width: 90px;
 }
 
 
