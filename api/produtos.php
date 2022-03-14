@@ -3,11 +3,14 @@
 
 <?php header("Access-Control-Allow-Origin: *");
 
+
+
 // get the HTTP method, path and body of the request
 $method = $_SERVER['REQUEST_METHOD'];
 $request = explode('/', trim($_SERVER['PATH_INFO'],'/'));
 $input = file_get_contents('php://input');
 $a = json_decode($input, true);
+
 
 $link = mysqli_connect('localhost', 'alpha_sys', 'alpha123');
 $dbname = 'alpha_sys';
@@ -24,10 +27,12 @@ $val =  "'".$_POST['descricao']."'";
 $columns = 'nome,descricao,valor,quantidade';
 
 $set = '';
-for ($i=0;$i<count($input);$i++) {
+for ($i=0;$i<count($int);$i++) {
   $set.=($i>0?',':'').'`'.$columns[$i].'`=';
   $set.=($values[$i]===null?'NULL':'"'.$values[$i].'"');
 }
+
+$req = explode("/", parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
 
 
 //return;
@@ -40,16 +45,28 @@ switch ($method) {
     break;
     //$sql = "SELECT id,data,programacao, concat('Programação: ', programacao , ' | Data: ' , data) as prog order by data asc"; break;
   case 'PUT':
-    $sql = "update `$table` set $set where id=$key"; break;
+    $sql = "update `$table` set $set where id=$key";
+    echo $sql;
+    return;
+    break;
   case 'POST':
     // $sql = "insert into `$table` (".$columns.") values (". $val.")";
     // return;
-    $sql = sprintf(
-      "INSERT INTO `$table` (%s) VALUES ('%s');",
-      implode(',', array_keys($a)),
-      implode("','", array_values($a))
-    );
-    break;
+    if (strval($req[4]) == 'update') {
+      $nome = $a['nome'];
+      $desc = $a['descricao'];
+      $valor = $a['valor'];
+      $id = $a['id'];
+      $sql = "update `$table` set nome= '$nome', descricao= '$desc', valor= $valor  where id=$id";
+      echo $sql;
+    }else {
+      $sql = sprintf(
+        "INSERT INTO `$table` (%s) VALUES ('%s');",
+        implode(',', array_keys($a)),
+        implode("','", array_values($a))
+      );
+    }
+      break;
   case 'DELETE':
     $sql = "delete `$table` where id=$key"; break;
 }
@@ -71,6 +88,7 @@ if ($method == 'GET') {
 
   while($resultado = mysqli_fetch_assoc($result)){
     $dados[] =  array(
+    "id" => $resultado['id'],
     "nome" => $resultado['nome'],
     "descricao"=>$resultado['descricao'],
     "valor"=>$resultado['valor'],

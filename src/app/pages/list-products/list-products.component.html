@@ -3,12 +3,12 @@
     <mat-icon>add</mat-icon>
   </button>
 
-  <button [disabled]="selection.selected.length == 0" (click)="openDialog()" color="primary" mat-mini-fab aria-label="Editar produto">
+  <button [disabled]="selection.selected.length !=1" (click)="openDialog()" color="primary" mat-mini-fab aria-label="Editar produto">
   <!-- <button [disabled]="selection.selected.length == 0" (click)="openDialog()" color="primary" mat-mini-fab aria-label="Incluir produto"> -->
 
     <mat-icon>edit</mat-icon>
   </button>
-  <button [disabled]="selection.selected.length == 0" (click)="openDialog()" color="warn" mat-mini-fab aria-label="Excluir produto">
+  <button [disabled]="selection.selected.length != 1" (click)="openDialog()" color="warn" mat-mini-fab aria-label="Excluir produto">
     <!-- <button [disabled]="selection.selected.length == 0" (click)="openDialog()" color="primary" mat-mini-fab aria-label="Incluir produto"> -->
 
       <mat-icon>close</mat-icon>

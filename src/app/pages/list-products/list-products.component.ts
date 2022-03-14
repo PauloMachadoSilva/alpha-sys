@@ -47,8 +47,8 @@ export class ListProductsComponent {
 
   types: {} =
   [
-    {nome:'Livro 1', descricao:'Descrição do livro', valor: 'R$: 50,00', },
-    {nome:'Livro 2', descricao:'Descrição do livro', valor: 'R$: 30,00', }
+    {id:1, nome:'Livro 1', descricao:'Descrição do livro', valor: 50 },
+    {id:2, nome:'Livro 2', descricao:'Descrição do livro', valor: 3000 }
   ];
   constructor(
     public dialog: MatDialog,
@@ -74,6 +74,18 @@ export class ListProductsComponent {
 
   }
 
+  // deleteProducts(): void {
+
+  //       ._servicosService
+  //       .deletarProdutos(this.formulario.value)
+  //       .subscribe(ret => console.log(ret));
+  //       this.openSnackBar();
+  //       this.dialogRef.close();
+  //       window.location.reload();
+
+  //   }
+  // }
+
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -85,7 +97,7 @@ export class ListProductsComponent {
   openDialog(): void {
 
     let dialogRef = this.dialog.open(DialogComponent, {
-      width: '100%',
+      width: 'auto',
       data: this.selection.selected
     });
 

@@ -6,7 +6,7 @@
 
 @media (min-width: 640px) {
     mat-card {
-        width: 40%;
+        width: 90%;
         margin: 0 auto;
     }
 }
@@ -50,5 +50,6 @@ textarea {
     display: list-item;
 }
 .mat-dialog-container {
+    width: auto ;
     max-height: 500px !important
 }

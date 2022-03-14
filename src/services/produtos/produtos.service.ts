@@ -42,5 +42,25 @@ export class produtosService {
           .post(`http://www.alphasolucaoemseg.com.br/sys/produtos.php/produtos/`, body, httpOptions)
   }
 
+  /**
+     * Atualizar produtos
+     * @author Paulo Eduardo - pauloems@yahoo.com.br
+     */
+   atualizarProdutos(body: any){
+    return this
+        ._httpClient
+        .post(`http://www.alphasolucaoemseg.com.br/sys/produtos.php/produtos/update`, body, httpOptions)
+}
+
+/**
+     * Deletar produtos
+     * @author Paulo Eduardo - pauloems@yahoo.com.br
+     */
+  deletarProdutos(body: any){
+    return this
+        ._httpClient
+        .post(`http://www.alphasolucaoemseg.com.br/sys/produtos.php/produtos/update`, body, httpOptions)
+}
+
 
 }
