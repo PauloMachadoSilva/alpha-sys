@@ -1,3 +1,4 @@
+import { ModalBudgetModule } from './modal-budget/modal-budget.module';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -19,6 +20,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox/';
   exports: [ListProductsComponent],
   imports: [
     DialogModule,
+    ModalBudgetModule,
     CommonModule,
     MatInputModule,
     MatButtonModule,

@@ -1,0 +1,37 @@
+<div class="container" style="overflow: auto;max-height: 500px;">
+  <h2>Orçamento</h2>
+  <div class="content-head">
+    <mat-label>Nome</mat-label>
+    <mat-label>Valor</mat-label>
+  </div>
+  <div class="content" *ngFor="let produto of productsArray">
+    <div>
+      <input (keyup)="addItem(produto.valor,produto.id,$event)" style="width: 30px;background-color: #cccccc47;border: 1px solid #ccc;margin-right: 8px;" class="items-inline"  matInput placeholder="1" #input>
+      <mat-label>{{produto.nome}}</mat-label>
+    </div>
+    <mat-label>{{produto.valor | currency : 'BRL' }}</mat-label>
+  </div>
+  <div class="content-footer">
+    <mat-label>Total de itens</mat-label>
+    <mat-label>{{productValue | currency : 'BRL'}}</mat-label>
+  </div>
+  <div class="grid">
+    <mat-form-field>
+      <mat-label>Valor da mão de obra</mat-label>
+      <input (keyup)="addValorMobra($event)" currencyMask formControlName="mobra" matInput placeholder="Informe o valor" [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"/>
+    </mat-form-field>
+  </div>
+  <div class="grid">
+    <mat-form-field>
+      <mat-label>Observações</mat-label>
+      <input formControlName="obsservacao" rows="3" cols="33" matInput placeholder="Observações da Ordem de serviço">
+    </mat-form-field>
+  </div>
+</div>
+<div class="action-button">
+  <button (click)="atualizar();" mat-raised-button color="primary">CONFIRMAR</button>
+</div>
+<div class="content-footer">
+  <mat-label>Total Geral</mat-label>
+  <mat-label>{{valueGeral | currency : 'BRL'}}</mat-label>
+</div>

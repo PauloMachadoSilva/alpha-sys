@@ -1,4 +1,8 @@
 <div mat-dialog-actions align="end" class="container-button">
+  <button [disabled]="selection.selected.length < 1" (click)="AddBudget()"  routerLink="/add-products" color="primary" mat-mini-fab aria-label="Incuir produto">
+    <mat-icon>feed</mat-icon>
+  </button>
+
   <button (click)="redirectAdd()"  routerLink="/add-products" color="primary" mat-mini-fab aria-label="Incuir produto">
     <mat-icon>add</mat-icon>
   </button>

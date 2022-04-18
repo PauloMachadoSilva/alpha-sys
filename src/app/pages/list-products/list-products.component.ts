@@ -1,3 +1,4 @@
+import { ModalBudgetComponent } from './modal-budget/modal-budget.component';
 import { AfterViewInit, Component, Inject, OnInit, ViewChild, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -47,8 +48,8 @@ export class ListProductsComponent {
 
   types: {} =
   [
-    {id:1, nome:'Livro 1', descricao:'Descrição do livro', valor: 50 },
-    {id:2, nome:'Livro 2', descricao:'Descrição do livro', valor: 3000 }
+    {id:1, nome:'Conector P4', descricao:'Conector P4', valor: 2 },
+    {id:2, nome:'Camera bullet infra-vermelho 20m	', descricao:'Camera bullet infra-vermelho 20m', valor: 109.90 }
   ];
   constructor(
     public dialog: MatDialog,
@@ -60,6 +61,15 @@ export class ListProductsComponent {
   ) {
     this.getProdutos();
   }
+
+  // getProdutos(): void {
+
+  //       this.svc = this.types ? this.types : [];
+  //       this.dataSource = new MatTableDataSource(this.svc ? this.svc : [] );
+  //       this.dataSource.paginator = this.paginator;
+  //       this.dataSource.sort = this.sort;
+
+  //   }
 
   getProdutos(): void {
     this
@@ -104,6 +114,18 @@ export class ListProductsComponent {
     dialogRef.afterClosed().subscribe(result => {
     });
   }
+
+  AddBudget(): void {
+
+    let dialogRef = this.dialog.open(ModalBudgetComponent, {
+      width: '90%',
+      data: this.selection.selected
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+    });
+  }
+
   redirectAdd() {
     this.router.navigate(['/add-products'])
 

@@ -1,0 +1,91 @@
+.spinner {
+  display: table;
+  margin: 0 auto;
+
+}
+
+@media (min-width: 640px) {
+  mat-card {
+      width: 90%;
+      margin: 0 auto;
+  }
+}
+
+@media (max-width: 640px) {
+  mat-card {
+      width: 90%;
+      margin: 0 auto;
+  }
+}
+
+.container {
+  width: 100%;
+  .content {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+  }
+
+  .content-head {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    border-bottom: 2px solid #ddd;
+    padding: 8px 0;
+  }
+
+  .content-footer {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    border-bottom: 2px solid #ddd;
+    padding: 8px 0;
+    margin-bottom: 24px;
+  }
+}
+
+.content-footer {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  border-bottom: 2px solid #ddd;
+  padding: 8px 0;
+  margin-bottom: 24px;
+}
+
+.grid {
+  display: grid;
+  margin-top: 8px;
+}
+.action-button {
+  width: 100%;
+  margin-top: 24px;
+  margin-bottom: 24px !important;
+  display: flex;
+}
+button {
+  width: 100%;
+  height: 45px;
+}
+textarea {
+  font-size: 16px;
+  transform-origin: top left;
+}
+.value-itens {
+  text-align: right;
+  flex: auto;
+}
+.items {
+  width: 100%;
+  justify-content:space-between;
+}
+.items-inline {
+  display: inline-flex;
+}
+.mat-list-text {
+  display: list-item;
+}
+.mat-dialog-container {
+  width: auto ;
+  max-height: 500px !important
+}

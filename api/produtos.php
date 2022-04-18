@@ -4,6 +4,8 @@
 <?php header("Access-Control-Allow-Origin: *");
 
 
+echo "entrei";
+return;
 
 // get the HTTP method, path and body of the request
 $method = $_SERVER['REQUEST_METHOD'];
@@ -40,7 +42,7 @@ $req = explode("/", parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
 switch ($method) {
   case 'GET':
     // $sql = "select concat(nome,' - ', DATE_FORMAT(STR_TO_DATE(data, '%Y-%m-%d'),'%d/%m')) as aniversariante from aniversariantes order by data asc";
-    $sql = "select * from produtos";
+    $sql = "select * from produtos where ativo = 0";
     // echo $sql;
     break;
     //$sql = "SELECT id,data,programacao, concat('Programação: ', programacao , ' | Data: ' , data) as prog order by data asc"; break;
