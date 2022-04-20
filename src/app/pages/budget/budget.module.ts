@@ -1,10 +1,9 @@
-import { ModalBudgetModule } from './modal-budget/modal-budget.module';
+import { DialogModule } from './modal';
+import { BudgetComponent } from './budget.component';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-import { ListProductsComponent } from './list-products.component';
-import { DialogModule } from './modal';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -13,14 +12,16 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { MatCheckboxModule } from '@angular/material/checkbox/';
+import { MatCommonModule } from '@angular/material/core';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatCardModule } from '@angular/material/card';
 
 
 @NgModule({
-  declarations: [ListProductsComponent],
-  exports: [ListProductsComponent],
+  declarations: [BudgetComponent],
+  exports: [BudgetComponent],
   imports: [
     DialogModule,
-    ModalBudgetModule,
     CommonModule,
     MatInputModule,
     MatButtonModule,
@@ -30,7 +31,14 @@ import { MatCheckboxModule } from '@angular/material/checkbox/';
     MatCheckboxModule,
     MatTableModule,
     MatPaginatorModule,
+    MatCommonModule,
+    MatDialogModule,
+    MatInputModule,
+    MatSelectModule,
+    MatCheckboxModule,
+    MatListModule,
+    MatCardModule,
     MatIconModule,
   ],
 })
-export class ListProductsModel {}
+export class BudgetModule {}

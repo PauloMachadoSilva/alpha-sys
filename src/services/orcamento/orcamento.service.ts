@@ -14,7 +14,7 @@ const httpOptions = {
 
 
 @Injectable()
-export class produtosService {
+export class orcamentoService {
     constructor (
         private _httpClient: HttpClient,
     ) {
@@ -25,22 +25,23 @@ export class produtosService {
      * Consultando Servicos na Servidor, retornando JSON Ge
      * @author Paulo Eduardo - pauloems@yahoo.com.br
      */
-    consultaProdutos(){
+    consultaOrcamentos(){
         return this
             ._httpClient
-            .get(`http://www.alphasolucaoemseg.com.br/sys/produtos.php/produtos/`, httpOptions)
+            .get(`http://www.alphasolucaoemseg.com.br/sys/orcamentos.php/orcamentos/`, httpOptions)
     }
 
-
     /**
-     * Incluindo produtos
+     * Consultando Servicos na Servidor, retornando JSON Ge
      * @author Paulo Eduardo - pauloems@yahoo.com.br
      */
-     incluirProdutos(body: any){
+     consultaOrcamentoxProdutos(body: any){
+      const $id = body;
       return this
           ._httpClient
-          .post(`http://www.alphasolucaoemseg.com.br/sys/produtos.php/produtos/`, body, httpOptions)
+          .get('http://www.alphasolucaoemseg.com.br/sys/orcamentos.php/orcamentos/'+ $id)
   }
+
 
   /**
      * Incluindo Orçamentos
@@ -50,16 +51,6 @@ export class produtosService {
     return this
         ._httpClient
         .post(`http://www.alphasolucaoemseg.com.br/sys/orcamentos.php/orcamentos/`, body, httpOptions)
-}
-
-  /**
-     * Atualizar produtos
-     * @author Paulo Eduardo - pauloems@yahoo.com.br
-     */
-   atualizarProdutos(body: any){
-    return this
-        ._httpClient
-        .post(`http://www.alphasolucaoemseg.com.br/sys/produtos.php/produtos/update`, body, httpOptions)
 }
 
 /**

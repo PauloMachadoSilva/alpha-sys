@@ -1,3 +1,4 @@
+import { BudgetComponent } from './pages/budget';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { CUSTOM_ELEMENTS_SCHEMA, LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -21,6 +22,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatCardContent, MatCardModule} from '@angular/material/card';
 import { CardComponent } from './components/card/card.component';
 import { produtosService } from './../services/produtos/produtos.service';
+import { orcamentoService } from './../services/orcamento/orcamento.service';
 import { ProductsComponent } from './pages/products/products.component';
 import { CoreModule, FlexLayoutModule } from '@angular/flex-layout';
 import { HttpClientModule } from '@angular/common/http';
@@ -57,6 +59,7 @@ const routes: Routes = [
   { path: 'list-products', component: ListProductsComponent },
   { path: 'confirm-buy', component: ConfirmBuyComponent },
   { path: 'relatorio', component: RelatorioComponent },
+  { path: 'orcamentos', component: BudgetComponent },
   {path: '', component: LoginComponent,},
   // {path: '**', component: PaginaNaoEncontradaComponent}
 ];
@@ -108,6 +111,7 @@ const routes: Routes = [
   exports: [RouterModule],
   providers: [
     produtosService,
+    orcamentoService,
     { provide: LocationStrategy, useClass: HashLocationStrategy },
     { provide: LOCALE_ID, useValue: 'pt' },
   ],

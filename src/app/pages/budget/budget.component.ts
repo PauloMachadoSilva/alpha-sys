@@ -1,4 +1,3 @@
-import { ModalBudgetComponent } from './modal-budget/modal-budget.component';
 import { AfterViewInit, Component, Inject, OnInit, ViewChild, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -9,35 +8,24 @@ import { produtosService } from 'src/services/produtos/produtos.service';
 import { SelectionModel } from '@angular/cdk/collections';
 import { DialogComponent } from './modal/dialog.component';
 import { Router } from '@angular/router';
+import { orcamentoService } from 'src/services/orcamento/orcamento.service';
 
 
 export interface UserData {
   id: string;
-  name: string;
+  data: string;
   progress: string;
   valor: string;
-}
-
-export interface DialogData {
-  animal: string;
-  name: string;
-}
-
-/** Constants used to fill up our data base. */
-const VALOR: string[] = [
-  'R$ 1.500,00', 'R$ 2.500,00', 'R$ 3.500,00', 'R$ 4.000,00', 'R$ 500,00', 'R$ 1.000,00', 'R$ 600,00'
-];
-const NAMES: string[] = [
-  'Livro 1', 'Livro 2', 'Livro 3', 'Caderno 1', 'Caderno 2', 'Adesivo', 'Camisa'
-];
+};
 
 @Component({
-  selector: 'app-list-products',
-  styleUrls: ['./list-products.component.scss'],
-  templateUrl: './list-products.component.html',
+  selector: 'app-budget',
+  templateUrl: './budget.component.html',
+  styleUrls: ['./budget.component.scss']
 })
-export class ListProductsComponent {
-  displayedColumns: string[] = ['select','nome', 'valor'];
+
+export class BudgetComponent {
+  displayedColumns: string[] = ['select', 'cliente' ,'data', 'valor_orcamento'];
   dataSource: MatTableDataSource<UserData>;
   animal: string;
   name: string;
@@ -48,33 +36,30 @@ export class ListProductsComponent {
 
   types: {} =
   [
-    {id:1, nome:'Conector P4', descricao:'Conector P4', valor: 2 },
-    {id:2, nome:'Camera bullet infra-vermelho 20m	', descricao:'Camera bullet infra-vermelho 20m', valor: 109.90 }
+    {id:1, data:'2022-04-18', cliente:'Cliente 1', valor_orcamento: 1000, valor_mao_obra : 100, observacao:'obs' },
+    {id:1, data:'2022-04-10', cliente:'Cliente 2', valor_orcamento: 500, valor_mao_obra : 100, observacao:'obs' },
   ];
+  orderObj = {};
   constructor(
+    private _orcamentoService: orcamentoService,
     public dialog: MatDialog,
-    private _servicosService: produtosService,
     private router: Router
+    ) {
+      this.getOrcamentos();
+     }
+
+  // getOrcamentos(): void {
+  //   this.svc = this.types ? this.types : [];
+  //   this.dataSource = new MatTableDataSource(this.svc ? this.svc : [] );
+  //   this.dataSource.paginator = this.paginator;
+  //   this.dataSource.sort = this.sort;
+  // }
 
 
-
-  ) {
-    this.getProdutos();
-  }
-
-  // getProdutos(): void {
-
-  //       this.svc = this.types ? this.types : [];
-  //       this.dataSource = new MatTableDataSource(this.svc ? this.svc : [] );
-  //       this.dataSource.paginator = this.paginator;
-  //       this.dataSource.sort = this.sort;
-
-  //   }
-
-  getProdutos(): void {
+  getOrcamentos(): void {
     this
-      ._servicosService
-      .consultaProdutos()
+      ._orcamentoService
+      .consultaOrcamentos()
       .subscribe(svc => {
         this.svc = svc ? svc : [];
         this.dataSource = new MatTableDataSource(this.svc.retorno ? this.svc.retorno : [] );
@@ -83,18 +68,6 @@ export class ListProductsComponent {
       });
 
   }
-
-  // deleteProducts(): void {
-
-  //       ._servicosService
-  //       .deletarProdutos(this.formulario.value)
-  //       .subscribe(ret => console.log(ret));
-  //       this.openSnackBar();
-  //       this.dialogRef.close();
-  //       window.location.reload();
-
-  //   }
-  // }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -107,17 +80,6 @@ export class ListProductsComponent {
   openDialog(): void {
 
     let dialogRef = this.dialog.open(DialogComponent, {
-      width: 'auto',
-      data: this.selection.selected
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-    });
-  }
-
-  AddBudget(): void {
-
-    let dialogRef = this.dialog.open(ModalBudgetComponent, {
       width: '90%',
       data: this.selection.selected
     });
@@ -127,21 +89,21 @@ export class ListProductsComponent {
   }
 
   redirectAdd() {
-    this.router.navigate(['/add-products'])
+    this.router.navigate(['/list-products'])
 
   }
 
-   /** Whether the number of selected elements matches the total number of rows. */
-   isAllSelected() {
-     if (this.selection.selected.length > 0) {
-        const numSelected = this.selection.selected.length;
-        const numRows = this.dataSource.data.length;
-        return numSelected === numRows;
-     }
-  }
+    /** Whether the number of selected elements matches the total number of rows. */
+    isAllSelected() {
+      if (this.selection.selected.length > 0) {
+         const numSelected = this.selection.selected.length;
+         const numRows = this.dataSource.data.length;
+         return numSelected === numRows;
+      }
+   }
 
-  /** Selects all rows if they are not all selected; otherwise clear selection. */
-  masterToggle() {
+   /** Selects all rows if they are not all selected; otherwise clear selection. */
+   masterToggle() {
     if (this.isAllSelected()) {
       this.selection.clear();
       return;
@@ -159,4 +121,5 @@ export class ListProductsComponent {
 
 
   }
+
 }

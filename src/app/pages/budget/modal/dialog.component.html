@@ -1,0 +1,44 @@
+<div class="container" style="overflow: auto;max-height: 500px;">
+  <h2>Orçamento Detalhado</h2>
+  <div class="content-head">
+    <mat-label>Qtde/Nome</mat-label>
+    <mat-label>Valor</mat-label>
+  </div>
+  <div class="content" *ngFor="let produto of produtos">
+    <div>
+      <input value="{{produto.quantidade}}" readonly style="width: 30px;background:0;border:0;margin-right: 8px;" class="items-inline"  matInput placeholder="1" #input>
+      <mat-label>{{produto.nome}}</mat-label>
+    </div>
+    <mat-label>{{produto.valor | currency : 'BRL' }}</mat-label>
+  </div>
+  <div class="content-footer">
+    <mat-label>Total de itens</mat-label>
+    <mat-label>{{productValue | currency : 'BRL'}}</mat-label>
+  </div>
+    <div class="grid">
+      <mat-form-field>
+        <mat-label>Cliente</mat-label>
+        <input value="{{orcamento.cliente}}" readonly formControlName="cliente" rows="1" cols="33" matInput placeholder="Nome do cliente">
+      </mat-form-field>
+    </div>
+    <div class="grid">
+      <mat-form-field>
+        <mat-label>Valor da mão de obra</mat-label>
+        <input style="text-align: right;color:blue" value="{{orcamento.valor_mao_obra | currency : 'BRL'}}" readonly formControlName="mobra" matInput />
+      </mat-form-field>
+    </div>
+    <div class="grid">
+      <mat-form-field>
+        <mat-label>Observações</mat-label>
+        <input value="{{orcamento.observacao}}" readonly formControlName="observacao" rows="3" cols="33" matInput placeholder="Observações da Ordem de serviço">
+      </mat-form-field>
+    </div>
+</div>
+<div class="content-footer">
+  <mat-label>Total Geral</mat-label>
+  <mat-label>{{produtoValorGeral | currency : 'BRL'}}</mat-label>
+</div>
+<div class="action-button">
+  <button (click)="gerarPdf()" mat-raised-button color="primary">GERAR PDF</button>
+</div>
+
